@@ -15,7 +15,7 @@
 ## 指令执行顺序
 ![image](https://user-images.githubusercontent.com/3062921/182553194-72821cc8-9761-4b39-aef3-185e0b34006f.png)
 
-## 安装
+## 安装&测试
 ``` bash
 luarocks install api7-lua-tinyyaml --tree=deps
 luarocks install lua-resty-radixtree --tree=deps
@@ -23,6 +23,12 @@ luarocks install lua-resty-iputils --tree=deps
 
 ##必须要手动创建
 mkdir logs
+
+## 网关
+curl  -v  http://127.0.0.1:10666/data/mask
+
+## 认证
+curl  -v -u "bjca:bjca" http://127.0.0.1:10666/auth
 ```
 
 ## TODO
