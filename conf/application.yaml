@@ -1,0 +1,8 @@
+configResource: /Users/shuvigoss/Documents/own/projects/others/openresty-sample/conf/app.json
+plugins:
+  - name: basic_auth
+    phase: access
+    runner: basic_auth
+  - name: mask_body
+    phase: body_filter
+    runner: mask_body

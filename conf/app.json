@@ -1,0 +1,68 @@
+{
+    "routes": [
+        {
+            "location": "/auth",
+            "upstream": "auth_upstream"
+        },
+        {
+            "location": "/data/*",
+            "upstream": "data_upstream"
+        }
+    ],
+    "upstreams": [
+        {
+            "name": "data_upstream",
+            "method": "round_robin",
+            "hosts": [
+                {
+                    "name": "127.0.0.1:8090",
+                    "host": "127.0.0.1",
+                    "port": 8090,
+                    "weight": 100,
+                    "max_fails": 2,
+                    "fail_timeout": 11,
+                    "default_down": false
+                },
+                {
+                    "name": "127.0.0.1:8091",
+                    "host": "127.0.0.1",
+                    "port": 8091,
+                    "weight": 100,
+                    "max_fails": 3,
+                    "fail_timeout": 10,
+                    "default_down": false
+                }
+            ]
+        },
+        {
+            "name": "auth_upstream",
+            "method": "round_robin",
+            "hosts": [
+                {
+                    "name": "127.0.0.1:8090",
+                    "host": "127.0.0.1",
+                    "port": 8090
+                },
+                {
+                    "name": "127.0.0.1:8091",
+                    "host": "127.0.0.1",
+                    "port": 8091
+                }
+            ]
+        }
+    ],
+    "plugins": [
+        {
+            "upstream": "auth_upstream",
+            "plugins": [
+                "basic_auth"
+            ]
+        },
+        {
+            "upstream": "data_upstream",
+            "plugins": [
+                "mask_body"
+            ]
+        }
+    ]
+}
