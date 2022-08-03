@@ -15,11 +15,14 @@
 ## 指令执行顺序
 ![image](https://user-images.githubusercontent.com/3062921/182553194-72821cc8-9761-4b39-aef3-185e0b34006f.png)
 
-## luarocks
+## 安装
 ``` bash
 luarocks install api7-lua-tinyyaml --tree=deps
 luarocks install lua-resty-radixtree --tree=deps
 luarocks install lua-resty-iputils --tree=deps
+
+##必须要手动创建
+mkdir logs
 ```
 
 ## TODO
